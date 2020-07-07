@@ -7,7 +7,7 @@ class MusicService:
             print('Music already exists with name', name)
             raise FileExistsError
         music = Music(name, data['authorId'])
-        print("Creating Music", music.json())
+        print('Creating Music', music.json())
         music.save_to_db()
         return music.json()
 
