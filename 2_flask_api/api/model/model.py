@@ -1,4 +1,3 @@
-import json
 from db import db
 
 class Model:
@@ -11,4 +10,4 @@ class Model:
         db.session.commit()
 
     def json(self):
-        return json.dumps(self.__dict__)
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
