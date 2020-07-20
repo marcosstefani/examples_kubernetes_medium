@@ -1,13 +1,13 @@
 from flask_restful import Resource, reqparse
 from service.music import MusicService
 
-class GetMusicByNameController(Resource):
-    def get(self, name):
+class GetMusicByAuthorController(Resource):
+    def get(self, authorId):
         service = MusicService()
-        music = service.find_by_name(name)
-        if not music:
+        musics = service.find_by_author(authorId)
+        if not musics:
             return {'message': 'Music not found'}, 404
-        return music, 200
+        return musics, 200
 
 class PostMusicController(Resource):
     parser = reqparse.RequestParser()

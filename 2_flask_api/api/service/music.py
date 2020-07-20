@@ -19,3 +19,12 @@ class MusicService:
             return None
         print(music)
         return music
+
+    def find_by_author(self, authorId):
+        print('Finding Music by authorId', authorId)
+        musics = list(map(lambda x: x.json(), Music.query.filter_by(authorId=authorId).all()))
+        if not musics:
+            print('Music not found with authorId', authorId)
+            return None
+        print(musics)
+        return musics

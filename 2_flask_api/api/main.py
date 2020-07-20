@@ -4,7 +4,7 @@ from flask_restful import Api
 from env import Env
 
 from controller.author import GetAuthorByNameController, PostAuthorController
-from controller.music import GetMusicByNameController, PostMusicController
+from controller.music import GetMusicByAuthorController, PostMusicController
 
 # Carrega Variaveis de Ambiente
 env = Env()
@@ -23,7 +23,7 @@ def create_tables():
 # Configura Rotas
 api.add_resource(GetAuthorByNameController, '/author/<string:name>')
 api.add_resource(PostAuthorController, '/author')
-api.add_resource(GetMusicByNameController, '/music/<string:name>')
+api.add_resource(GetMusicByAuthorController, '/musics/<int:authorId>')
 api.add_resource(PostMusicController, '/music')
 
 # Inicializa Banco de Dados e Inicializa Aplicação
